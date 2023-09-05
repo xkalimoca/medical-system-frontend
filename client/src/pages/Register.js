@@ -9,9 +9,7 @@ const Register = () => {
 
     const onfinishHandler = async (values) => {
         try {
-            dispatch(showLoading());
             const res = await axios.post("/api/v1/user/register", values);
-            dispatch(hideLoading());
             if (res.data.success) {
               message.success("Registro Correcto!");
               navigate("/login");
@@ -19,7 +17,6 @@ const Register = () => {
               message.error(res.data.message);
             }
           } catch (error) {
-            dispatch(hideLoading());
             console.log(error);
             message.error("Algo salio mal!");
           }
