@@ -14,7 +14,7 @@ const Register = () => {
           layout="vertical"
           onFinish={onfinishHandler} className="register-form"
         >
-            <h3 className="text-center">Formulario de Registro</h3>
+            <h3 className="text-center">Registro</h3>
             <Form.Item label="Correo electrónico" name="email">
             <Input type="email" required />
           </Form.Item>
@@ -28,7 +28,7 @@ const Register = () => {
             Iniciar Sesion
             </Link>
           <button className="btn btn-primary" type="submit">
-            Register
+            Registrar
           </button>
         </Form>
       </div>
