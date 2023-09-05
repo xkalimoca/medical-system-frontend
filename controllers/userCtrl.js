@@ -23,8 +23,30 @@ const registerController = async (req, res) => {
       message: `Register Controller ${error.message}`});
   }
 };
-
-const loginController = () => {};
+//login callback
+const loginController = async (req, res) => {
+  try {
+    const user = await userModel.findOne({ email: req.body.email });
+    if (!user) {
+      return res
+        .status(200)
+        .send({ message: "Usuario no encontrado", success: false });
+    }
+    const isMatch = await bcrypt.compare(req.body.password, user.password);
+    if (!isMatch) {
+      return res
+        .status(200)
+        .send({ message: "Correo o Contraseña invalida", success: false });
+    }
+    const token = jwt.sign({ id: user.__id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+    res.status(200).send({ message: "Inicio de sesion correcto!", success: true, token });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: `Error in Login CTRL ${error.message}` });
+  }
+};
 
 module.exports = {
   registerController,
