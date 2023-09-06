@@ -42,7 +42,7 @@ const loginController = async (req, res) => {
         .status(200)
         .send({ message: "Correo o contraseña invalida", success: false });
     }
-    const token = jwt.sign({ id: user.__id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
     res.status(200).send({ message: "Inicio de sesion correcto!", success: true, token });
