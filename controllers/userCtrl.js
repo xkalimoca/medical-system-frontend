@@ -9,7 +9,7 @@ const registerController = async (req, res) => {
     if (exisitingUser) {
       return res
         .status(200)
-        .send({ message: "El usuario ya existe.", success: false });
+        .send({ message: "User Already Exist", success: false });
     }
     const password = req.body.password;
     const salt = await bcrypt.genSalt(10);
@@ -17,7 +17,7 @@ const registerController = async (req, res) => {
     req.body.password = hashedPassword;
     const newUser = new userModel(req.body);
     await newUser.save();
-    res.status(201).send({ message: "Registro correcto.", success: true });
+    res.status(201).send({ message: "Register Sucessfully", success: true });
   } catch (error) {
     console.log(error);
     res.status(500).send({
@@ -34,18 +34,18 @@ const loginController = async (req, res) => {
     if (!user) {
       return res
         .status(200)
-        .send({ message: "Usuario no encontrado", success: false });
+        .send({ message: "user not found", success: false });
     }
     const isMatch = await bcrypt.compare(req.body.password, user.password);
     if (!isMatch) {
       return res
         .status(200)
-        .send({ message: "Correo o contraseña invalida", success: false });
+        .send({ message: "Invlid EMail or Password", success: false });
     }
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
-    res.status(200).send({ message: "Inicio de sesion correcto!", success: true, token });
+    res.status(200).send({ message: "Login Success", success: true, token });
   } catch (error) {
     console.log(error);
     res.status(500).send({ message: `Error in Login CTRL ${error.message}` });
@@ -76,4 +76,5 @@ const authController = async (req, res) => {
     });
   }
 };
-module.exports = { loginController, registerController,authController };
+
+module.exports = { loginController, registerController, authController };
