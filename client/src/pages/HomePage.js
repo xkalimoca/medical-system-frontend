@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import Layout from "../components/layout";
+import Layout from "./../components/layout";
 const HomePage = () => {
   // login user data
   const getUserData = async () => {
