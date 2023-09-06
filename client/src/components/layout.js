@@ -49,7 +49,7 @@ const Layout = ({ children }) => {
             <div className="header">
               <div className="header-content">
                 <i class="fa-solid fa-bell"></i>
-                <Link to="/profile">{user?.name}</Link>
+                <Link to="/profile">{user?.username}</Link>
               </div>
             </div>
             <div className="body">{children}</div>
