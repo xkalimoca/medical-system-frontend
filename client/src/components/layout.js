@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
   // logout funtion
   const handleLogout = () => {
     localStorage.clear();
-    message.success("Logout Successfully");
+    message.success("Se cerró sesión correctamente");
     navigate("/login");
   };
 
@@ -59,14 +59,14 @@ const Layout = ({ children }) => {
                   <>
                     <div className={`menu-item ${isActive && "active"}`}>
                       <i className={menu.icon}></i>
-                      <Link to={menu.path}>{menu.name}</Link>
+                      <Link to={menu.path}>{menu.username}</Link>
                     </div>
                   </>
                 );
               })}
               <div className={`menu-item `} onClick={handleLogout}>
                 <i className="fa-solid fa-right-from-bracket"></i>
-                <Link to="/login">Logout</Link>
+                <Link to="/login">Cerrar sesión</Link>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@ const Layout = ({ children }) => {
                   <i class="fa-solid fa-bell"></i>
                 </Badge>
 
-                <Link to="/profile">{user?.name}</Link>
+                <Link to="/profile">{user?.username}</Link>
               </div>
             </div>
             <div className="body">{children}</div>

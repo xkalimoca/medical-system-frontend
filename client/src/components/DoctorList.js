@@ -15,16 +15,13 @@ const DoctorList = ({ doctor }) => {
         </div>
         <div className="card-body">
           <p>
-            <b>Specialization</b> {doctor.specialization}
+            <b>Especialidad</b> {doctor.especialidad}
           </p>
           <p>
-            <b>Experience</b> {doctor.experience}
+            <b>Clinica</b> {doctor.clinica}
           </p>
           <p>
-            <b>Fees Per Cunsaltation</b> {doctor.feesPerCunsaltation}
-          </p>
-          <p>
-            <b>Timings</b> {doctor.timings[0]} - {doctor.timings[1]}
+            <b>Tiempo</b> {doctor.tiempo[0]} - {doctor.tiempo[1]}
           </p>
         </div>
       </div>

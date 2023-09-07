@@ -15,7 +15,7 @@ const Register = () => {
       const res = await axios.post("/api/v1/user/register", values);
       dispatch(hideLoading());
       if (res.data.success) {
-        message.success("Register Successfully!");
+        message.success("Se registro correctamente!");
         navigate("/login");
       } else {
         message.error(res.data.message);
@@ -23,7 +23,7 @@ const Register = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("Something Went Wrong");
+      message.error("Algo salió mal");
     }
   };
   return (
@@ -34,21 +34,21 @@ const Register = () => {
           onFinish={onfinishHandler}
           className="register-form"
         >
-          <h3 className="text-center">Register From</h3>
-          <Form.Item label="Name" name="name">
+          <h3 className="text-center">Registro</h3>
+          <Form.Item label="Username" name="username">
             <Input type="text" required />
           </Form.Item>
-          <Form.Item label="Email" name="email">
+          <Form.Item label="Correo Electronico" name="email">
             <Input type="email" required />
           </Form.Item>
-          <Form.Item label="Password" name="password">
+          <Form.Item label="Contraseña" name="password">
             <Input type="password" required />
           </Form.Item>
           <Link to="/login" className="m-2">
-            Already user login here
+            Este usuario ya inició sesión
           </Link>
           <button className="btn btn-primary" type="submit">
-            Register
+            Registrarse
           </button>
         </Form>
       </div>

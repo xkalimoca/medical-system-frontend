@@ -6,14 +6,14 @@ const getAllUsersController = async (req, res) => {
     const users = await userModel.find({});
     res.status(200).send({
       success: true,
-      message: "users data list",
+      message: "lista de datos de usuarios",
       data: users,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "erorr while fetching users",
+      message: "erorr al buscar usuarios",
       error,
     });
   }
@@ -24,14 +24,14 @@ const getAllDoctorsController = async (req, res) => {
     const doctors = await doctorModel.find({});
     res.status(200).send({
       success: true,
-      message: "Doctors Data list",
+      message: "Lista de datos de los Medicos",
       data: doctors,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "error while getting doctors data",
+      message: "Error al obtener los datos de los médicos",
       error,
     });
   }
@@ -46,21 +46,21 @@ const changeAccountStatusController = async (req, res) => {
     const notifcation = user.notifcation;
     notifcation.push({
       type: "doctor-account-request-updated",
-      message: `Your Doctor Account Request Has ${status} `,
+      message: `Su solicitud de cuenta de médico está ${status} `,
       onClickPath: "/notification",
     });
     user.isDoctor = status === "approved" ? true : false;
     await user.save();
     res.status(201).send({
       success: true,
-      message: "Account Status Updated",
+      message: "Estado de la cuenta actualizado",
       data: doctor,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "Eror in Account Status",
+      message: "Error en el estado de la cuenta",
       error,
     });
   }

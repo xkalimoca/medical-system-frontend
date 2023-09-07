@@ -6,7 +6,7 @@ const getDoctorInfoController = async (req, res) => {
     const doctor = await doctorModel.findOne({ userId: req.body.userId });
     res.status(200).send({
       success: true,
-      message: "doctor data fetch success",
+      message: "éxito de la búsqueda de datos del médico",
       data: doctor,
     });
   } catch (error) {
@@ -14,7 +14,7 @@ const getDoctorInfoController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error in Fetching Doctor Details",
+      message: "Error al obtener los datos del médico",
     });
   }
 };
@@ -28,14 +28,14 @@ const updateProfileController = async (req, res) => {
     );
     res.status(201).send({
       success: true,
-      message: "Doctor Profile Updated",
+      message: "Perfil del médico actualizado",
       data: doctor,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "Doctor Profile Update issue",
+      message: "Problema de actualización del perfil del médico",
       error,
     });
   }

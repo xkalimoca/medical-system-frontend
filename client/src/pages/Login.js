@@ -18,7 +18,7 @@ const Login = () => {
       dispatch(hideLoading());
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);
-        message.success("Login Successfully");
+        message.success("Inicio de sesión correcto");
         navigate("/");
       } else {
         message.error(res.data.message);
@@ -26,7 +26,7 @@ const Login = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("something went wrong");
+      message.error("algo salió mal");
     }
   };
   return (
@@ -36,19 +36,19 @@ const Login = () => {
         onFinish={onfinishHandler}
         className="register-form"
       >
-        <h3 className="text-center">Login From</h3>
+        <h3 className="text-center">Iniciar sesión</h3>
 
-        <Form.Item label="Email" name="email">
+        <Form.Item label="Correo Electronico" name="email">
           <Input type="email" required />
         </Form.Item>
-        <Form.Item label="Password" name="password">
+        <Form.Item label="Contraseña" name="password">
           <Input type="password" required />
         </Form.Item>
         <Link to="/register" className="m-2">
-          Not a user Register here
+          Regístrese aquí
         </Link>
         <button className="btn btn-primary" type="submit">
-          Login
+          Iniciar Sesión
         </button>
       </Form>
     </div>

@@ -11,7 +11,7 @@ const registerController = async (req, res) => {
     if (exisitingUser) {
       return res
         .status(200)
-        .send({ message: "User Already Exist", success: false });
+        .send({ message: "El usuario ya existe!", success: false });
     }
     const password = req.body.password;
     const salt = await bcrypt.genSalt(10);
@@ -19,7 +19,9 @@ const registerController = async (req, res) => {
     req.body.password = hashedPassword;
     const newUser = new userModel(req.body);
     await newUser.save();
-    res.status(201).send({ message: "Register Sucessfully", success: true });
+    res
+      .status(201)
+      .send({ message: "Se registro correctamente.", success: true });
   } catch (error) {
     console.log(error);
     res.status(500).send({
@@ -36,18 +38,20 @@ const loginController = async (req, res) => {
     if (!user) {
       return res
         .status(200)
-        .send({ message: "user not found", success: false });
+        .send({ message: "Usuario no encontrado.", success: false });
     }
     const isMatch = await bcrypt.compare(req.body.password, user.password);
     if (!isMatch) {
       return res
         .status(200)
-        .send({ message: "Invlid EMail or Password", success: false });
+        .send({ message: "Correo o contraseña incorrecta.", success: false });
     }
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
-    res.status(200).send({ message: "Login Success", success: true, token });
+    res
+      .status(200)
+      .send({ message: "Inicio de sesion correcto", success: true, token });
   } catch (error) {
     console.log(error);
     res.status(500).send({ message: `Error in Login CTRL ${error.message}` });
@@ -60,7 +64,7 @@ const authController = async (req, res) => {
     user.password = undefined;
     if (!user) {
       return res.status(200).send({
-        message: "user not found",
+        message: "Usuario no encontrado",
         success: false,
       });
     } else {
@@ -82,13 +86,13 @@ const authController = async (req, res) => {
 // APpply DOctor CTRL
 const applyDoctorController = async (req, res) => {
   try {
-    const newDoctor = await doctorModel({ ...req.body, status: "pending" });
+    const newDoctor = await doctorModel({ ...req.body, status: "Pendiente" });
     await newDoctor.save();
     const adminUser = await userModel.findOne({ isAdmin: true });
     const notifcation = adminUser.notifcation;
     notifcation.push({
       type: "apply-doctor-request",
-      message: `${newDoctor.firstName} ${newDoctor.lastName} Has Applied For A Doctor Account`,
+      message: `${newDoctor.firstName} ${newDoctor.lastName} Ha solicitado una cuenta de médico`,
       data: {
         doctorId: newDoctor._id,
         name: newDoctor.firstName + " " + newDoctor.lastName,
@@ -98,14 +102,14 @@ const applyDoctorController = async (req, res) => {
     await userModel.findByIdAndUpdate(adminUser._id, { notifcation });
     res.status(201).send({
       success: true,
-      message: "Doctor Account Applied SUccessfully",
+      message: "Cuenta de médico solicitada con éxito",
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: "Error WHile Applying For Doctotr",
+      message: "Error al solicitar",
     });
   }
 };
