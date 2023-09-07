@@ -1,47 +1,56 @@
-const moongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const doctorSchema = new mongoose.Schema({
-    userId:{
-        type:String,
+const doctorSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: String,
     },
-    username: {
-        type: String,
-        required:[true,'username is required']
+    firstName: {
+      type: String,
+      required: [true, "first name is required"],
     },
-    Nombre: {
-        type: String,
-        required:[true,'Nombre is required']
+    lastName: {
+      type: String,
+      required: [true, "last name is required"],
     },
-    Apellido:{
-        type: String,
-        required:[true,'Apellido is required']
+    phone: {
+      type: String,
+      required: [true, "phone no is required"],
     },
-    Correo:{
-        type:String,
-        required:[true,'Correo no is required']
+    email: {
+      type: String,
+      required: [true, "email is required"],
     },
-    Telefono:{
-        type:String,
-        required:[true,'Telefono is required']
+    website: {
+      type: String,
     },
-    Especialidad:{
-        type:String,
-        required:[true,'Especialidad is required']
+    address: {
+      type: String,
+      required: [true, "address is required"],
     },
-    Clinica:{
-        type:String,
-        required:[true,'Clinica is required']
+    specialization: {
+      type: String,
+      required: [true, "specialization is require"],
     },
-    feesPerCunsalation:{
-        type:Number,
-        required:[true,'fees is required']
+    experience: {
+      type: String,
+      required: [true, "experience is required"],
+    },
+    feesPerCunsaltation: {
+      type: Number,
+      required: [true, "fee is required"],
+    },
+    status: {
+      type: String,
+      default: "pending",
     },
     timings: {
-        type: Object,
-        required:[true,'work timing is required']
+      type: Object,
+      required: [true, "wrok timing is required"],
     },
-},{timestamps:true}
+  },
+  { timestamps: true }
 );
 
-const doctorModel = mongoose.model('users', doctorSchema)
-module.exports = doctorModel
+const doctorModel = mongoose.model("doctors", doctorSchema);
+module.exports = doctorModel;
