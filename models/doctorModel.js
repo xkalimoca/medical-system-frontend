@@ -5,10 +5,6 @@ const doctorSchema = new mongoose.Schema(
     userId: {
       type: String,
     },
-    username: {
-      type: String,
-      required: [true, "username is required"],
-    },
     nombre: {
       type: String,
       required: [true, "nombre is required"],

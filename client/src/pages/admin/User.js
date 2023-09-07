@@ -28,12 +28,12 @@ const Users = () => {
   // antD table col
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
+      title: "Username",
+      dataIndex: "username",
     },
     {
-      title: "Email",
-      dataIndex: "email",
+      title: "Correo Electronico",
+      dataIndex: "correo",
     },
     {
       title: "Doctor",
@@ -53,7 +53,7 @@ const Users = () => {
 
   return (
     <Layout>
-      <h1 className="text-center m-2">Users List</h1>
+      <h1 className="text-center m-2">Lista de Usuarios</h1>
       <Table columns={columns} dataSource={users} />
     </Layout>
   );

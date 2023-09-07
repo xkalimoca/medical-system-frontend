@@ -3,9 +3,53 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background: rgb(226,248,223);
+background: radial-gradient(circle, rgba(226,248,223,1) 0%, rgba(231,246,236,1) 63%, rgba(234,255,230,1) 100%);
 }
 
 .register-form {
-  border: 1px solid gray;
+  border: 1px solid #cde6d2;
   padding: 30px;
+  border-radius: 10px; /* Esquinas redondeadas para suavizar el aspecto */
+  font-family: Arial, sans-serif; /* Fuente del formulario */
+  font-size: 16px;
+  color: #000000; /* Color del texto del formulario */
+  background-color: #e0f2e4;
 }
+
+/* Estilos para los campos del formulario */
+.register-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #cde6d2;
+  border-radius: 5px;
+}
+
+/* Estilos para el botón de registro */
+.register-form button {
+  background-color: #cde6d2; /* Color del botón */
+  color: #000000; /* Color del texto del botón */
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+.register-form button:hover {
+  background-color: #cde6d2; /* Cambia el color cuando se pasa el cursor por encima */
+}
+
+/* Estilos para los enlaces */
+.register-form a {
+  color: #000000; /* Color de los enlaces */
+  text-decoration: none;
+  transition: color 0.3s ease; /* Transición suave del color de los enlaces */
+}
+
+.register-form a:hover {
+  color: #ffffff; /* Cambia el color cuando se pasa el cursor por encima de los enlaces */
+}
+

@@ -21,8 +21,8 @@ const ApplyDoctor = () => {
           ...values,
           userId: user._id,
           timings: [
-            moment(values.timings[0]).format("HH:mm"),
-            moment(values.timings[1]).format("HH:mm"),
+            moment(values.tiempo[0]).format("HH:mm"),
+            moment(values.tiempo[1]).format("HH:mm"),
           ],
         },
         {
@@ -41,112 +41,87 @@ const ApplyDoctor = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("Somthing Went Wrrong ");
+      message.error("Algo salió mal ");
     }
   };
   return (
     <Layout>
-      <h1 className="text-center">Apply Doctor</h1>
+      <h1 className="text-center">Aplicar para Doctor</h1>
       <Form layout="vertical" onFinish={handleFinish} className="m-3">
-        <h4 className="">Personal Details : </h4>
+        <h4 className="">Detalle Personales : </h4>
         <Row gutter={20}>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="First Name"
+              label="Nombre"
               name="firstName"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your first name" />
+              <Input type="text" placeholder="tu nombre" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Last Name"
+              label="Apellido"
               name="lastName"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your last name" />
+              <Input type="text" placeholder="tu apellido" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Phone No"
+              label="Telefono"
               name="phone"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your contact no" />
+              <Input type="text" placeholder="tu numero de telefono" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Email"
+              label="Correo Electronico"
               name="email"
               required
               rules={[{ required: true }]}
             >
-              <Input type="email" placeholder="your email address" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={24} lg={8}>
-            <Form.Item label="Website" name="website">
-              <Input type="text" placeholder="your website" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={24} lg={8}>
-            <Form.Item
-              label="Address"
-              name="address"
-              required
-              rules={[{ required: true }]}
-            >
-              <Input type="text" placeholder="your clinic address" />
+              <Input type="email" placeholder="tu correo electronico" />
             </Form.Item>
           </Col>
         </Row>
-        <h4>Professional Details :</h4>
+        <h4>Detalles Profesionales :</h4>
         <Row gutter={20}>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Specialization"
-              name="specialization"
+              label="Especialidad"
+              name="especialidad"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your specialization" />
+              <Input type="text" placeholder="Tu especialidad" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Experience"
-              name="experience"
+              label="Clinica"
+              name="clinica"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your experience" />
+              <Input type="text" placeholder="Clinica a trabajar" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
-            <Form.Item
-              label="Fees Per Cunsaltation"
-              name="feesPerCunsaltation"
-              required
-              rules={[{ required: true }]}
-            >
-              <Input type="text" placeholder="your contact no" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={24} lg={8}>
-            <Form.Item label="Timings" name="timings" required>
+            <Form.Item label="Horario" name="tiempo" required>
               <TimePicker.RangePicker format="HH:mm" />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}></Col>
           <Col xs={24} md={24} lg={8}>
             <button className="btn btn-primary form-btn" type="submit">
-              Submit
+              Aplicar
             </button>
           </Col>
         </Row>

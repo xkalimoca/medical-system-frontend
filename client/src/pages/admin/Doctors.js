@@ -38,7 +38,7 @@ const Doctors = () => {
         window.location.reload();
       }
     } catch (error) {
-      message.error("Something Went Wrong");
+      message.error("Algo salió mal");
     }
   };
 
@@ -48,11 +48,11 @@ const Doctors = () => {
 
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
+      title: "Nombre",
+      dataIndex: "nombre",
       render: (text, record) => (
         <span>
-          {record.firstName} {record.lastName}
+          {record.nombre} {record.apellido}
         </span>
       ),
     },
@@ -61,8 +61,8 @@ const Doctors = () => {
       dataIndex: "status",
     },
     {
-      title: "phone",
-      dataIndex: "phone",
+      title: "Telefono",
+      dataIndex: "telefono",
     },
     {
       title: "Actions",

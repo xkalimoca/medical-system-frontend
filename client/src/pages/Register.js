@@ -45,7 +45,7 @@ const Register = () => {
             <Input type="password" required />
           </Form.Item>
           <Link to="/login" className="m-2">
-            Este usuario ya inició sesión
+            Iniciar sesión aquí
           </Link>
           <button className="btn btn-primary" type="submit">
             Registrarse
